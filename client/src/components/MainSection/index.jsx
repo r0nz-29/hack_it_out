@@ -19,10 +19,7 @@ const MainSection = () => {
           </Typography>
           <Typography
             color="white"
-            // variant="h1"
-            fontSize="84px"
-            fontWeight="700"
-            lineHeight="105px"
+            variant="h1"
             sx={{
               paddingBottom: (theme) => theme.spacing(4),
             }}
@@ -31,8 +28,7 @@ const MainSection = () => {
           </Typography>
           <Typography
             color="white"
-            fontWeight="100"
-            fontSize="16px"
+            variant="body1"
             sx={{
               paddingBottom: (theme) => theme.spacing(5),
               paddingLeft: (theme) => theme.spacing(2),

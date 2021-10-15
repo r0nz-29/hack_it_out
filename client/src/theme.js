@@ -17,6 +17,21 @@ let theme = createTheme({
     button: {
       textTransform: "none",
     },
+    h1: {
+      fontSize: "84px",
+      fontWeight: "700",
+      fontFamily: "Poppins",
+    },
+    h2: {
+      fontSize: "40px",
+      fontWeight: "700",
+      fontFamily: "Poppins",
+    },
+    body1: {
+      fontSize: "16px",
+      fontWeight: "100",
+      color: "#364547",
+    },
   },
 });
 

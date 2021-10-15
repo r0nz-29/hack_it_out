@@ -1,4 +1,4 @@
-import { AppBar, Button, Grid, Toolbar, Box } from "@mui/material";
+import { AppBar, Button, Grid, Toolbar } from "@mui/material";
 
 const Header = () => {
   return (

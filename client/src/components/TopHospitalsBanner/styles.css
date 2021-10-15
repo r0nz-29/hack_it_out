@@ -1,0 +1,19 @@
+.banner {
+  height: 46.8vh;
+  position: relative;
+  box-sizing: content-box;
+}
+
+.banner img {
+  width: 100%;
+  position: absolute;
+  top: -154px;
+  left: 0px;
+}
+
+.banner-text {
+  position: absolute;
+  color: white;
+  top: 25%;
+  left: 31.5%;
+}

@@ -1,0 +1,12 @@
+.main-section {
+  background-image: url("../../images/main_section.png");
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+  /* background-position: center; */
+  background-position-y: -250px;
+  /* background-position-x: -3px; */
+  background-size: cover;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+}

@@ -19,6 +19,8 @@ const Footer = () => {
         <Typography variant="h2" color="white">
           Get in touch <br /> with us for your <br /> service
         </Typography>
+        <br />
+        <br />
         {[
           <FacebookIcon color="secondary" />,
           <TwitterIcon color="secondary" />,
@@ -33,16 +35,17 @@ const Footer = () => {
           return (
             <React.Fragment key={ndx}>
               <Typography
-                fontSize="24px"
+                fontSize="20px"
                 fontWeight="100"
                 color="white"
                 sx={{ opacity: 0.6 }}
               >
                 {item.name}
               </Typography>
-              <Typography fontSize="30px" color="white">
+              <Typography fontSize="25px" color="white">
                 {item.num}
               </Typography>
+              <br />
             </React.Fragment>
           );
         })}

@@ -1,0 +1,12 @@
+.hospitals-grid {
+  background: url("../../images/search_page.png") no-repeat center center,
+    linear-gradient(
+      86.66deg,
+      rgba(151, 71, 220, 0.3) 1.44%,
+      rgba(93, 87, 235, 0.3) 108.34%
+    );
+  /* background-repeat: no-repeat; */
+  background-size: cover;
+  height: 100vh;
+  transition: 0.2s;
+}

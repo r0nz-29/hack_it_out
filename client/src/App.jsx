@@ -5,20 +5,36 @@ import CheckItOut from "./components/CheckItOut";
 import TopHospitalsBanner from "./components/TopHospitalsBanner";
 import Slider from "./components/Slider";
 import Footer from "./components/Footer";
+import SearchPage from "./components/SearchPage";
+import Hospitals from "./components/Hospitals";
 import "./App.css";
-import { Box } from "@mui/system";
+import { Box } from "@mui/material";
+import { Switch, Route } from "react-router-dom";
 
-function App() {
-  return (
-    <Box className="App">
-      <Header />
-      <MainSection />
-      <CheckItOut />
-      <TopHospitalsBanner />
-      <Slider />
-      <Footer />
-    </Box>
-  );
-}
+const Home = () => (
+  <>
+    <MainSection />
+    <CheckItOut />
+    <TopHospitalsBanner />
+    <Slider />
+  </>
+);
 
+const App = () => (
+  <Box className="App">
+    <Header />
+    <Switch>
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route exact path="/search">
+        <SearchPage />
+      </Route>
+      <Route exact path="/results">
+        <Hospitals />
+      </Route>
+    </Switch>
+    <Footer />
+  </Box>
+);
 export default App;

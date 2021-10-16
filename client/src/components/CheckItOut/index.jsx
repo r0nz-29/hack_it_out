@@ -10,6 +10,7 @@ const CheckItOut = () => {
   return (
     <>
       <Grid
+        id="news"
         className="check-it-out"
         container
         justifyContent="space-evenly"

@@ -1,8 +1,10 @@
 import { Button, Grid, Typography, Box } from "@mui/material";
+import { useHistory } from "react-router-dom";
 import doc from "../../images/doc.png";
 import "./styles.css";
 
 const MainSection = () => {
+  const history = useHistory();
   return (
     <Box className="main-section">
       <Grid container justifyContent="space-evenly">
@@ -46,6 +48,7 @@ const MainSection = () => {
               p: (theme) => theme.spacing(2),
               px: (theme) => theme.spacing(4),
             }}
+            onClick={() => history.push("/search")}
           >
             <Typography sx={{ color: "#2A268D", fontSize: "40px" }}>
               Get Started ➤

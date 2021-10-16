@@ -1,17 +1,65 @@
-import { AppBar, Button, Grid, Toolbar } from "@mui/material";
 import React from "react";
+import { AppBar, Button, Grid, Toolbar } from "@mui/material";
+import { useLocation, useHistory } from "react-router-dom";
+import { scroller } from "react-scroll";
 
 const Header = () => {
   const [visible, setVisible] = React.useState(false);
+  const location = useLocation();
+  const history = useHistory();
 
-  const handleScroll = () => {
+  function handleScroll() {
     let currentOffset = window.scrollY;
-    if (currentOffset > 0) {
+    if (currentOffset > 100) {
       setVisible(true);
     } else {
       setVisible(false);
     }
-  };
+  }
+
+  function scrollToSection(elementId) {
+    scroller.scrollTo(elementId, {
+      duration: 800,
+      delay: 0,
+      smooth: "easeInOutQuart",
+    });
+  }
+
+  function navigate(nav) {
+    switch (nav) {
+      case "Home":
+        history.push("/");
+        scrollToSection("main-section");
+        break;
+
+      case "News":
+        if (location.pathname === "/search") {
+          history.push("/");
+          setTimeout(() => {
+            scrollToSection("news");
+          }, 100);
+        }
+        scrollToSection("news");
+        break;
+
+      case "Top Hospitals":
+        if (location.pathname === "/search") {
+          history.push("/");
+          setTimeout(() => {
+            scrollToSection("banner");
+          }, 100);
+        }
+        scrollToSection("banner");
+        break;
+
+      case "Contact Us":
+        scrollToSection("footer");
+        break;
+
+      default:
+        break;
+    }
+  }
 
   React.useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -39,7 +87,14 @@ const Header = () => {
                 <Button
                   sx={{ mx: (theme) => theme.spacing(4) }}
                   key={ndx}
-                  color={visible ? "info" : "secondary"}
+                  color={
+                    visible ||
+                    location.pathname === "/search" ||
+                    location.pathname === "/results"
+                      ? "info"
+                      : "secondary"
+                  }
+                  onClick={() => navigate(nav)}
                 >
                   {nav}
                 </Button>
@@ -54,6 +109,7 @@ const Header = () => {
                 color: visible ? "white" : "#2A268D",
                 borderRadius: "40px",
               }}
+              onClick={() => history.push("/search")}
             >
               Get Started
             </Button>

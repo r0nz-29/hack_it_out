@@ -5,17 +5,20 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { footer } from "../../data/footer";
+import { useMediaQuery } from "@mui/material";
 import "./styles.css";
 
 const Footer = () => {
+  const lessThan514 = useMediaQuery("(max-width: 514px)");
   return (
     <Grid
       container
       className="footer"
       justifyContent="space-evenly"
       alignItems="center"
+      direction="column"
     >
-      <Grid item sx={{ paddingRight: (theme) => theme.spacing(40) }}>
+      <Grid item>
         <Typography variant="h2" color="white">
           Get in touch <br /> with us for your <br /> service
         </Typography>
@@ -30,7 +33,7 @@ const Footer = () => {
           return <IconButton key={ndx}>{icon}</IconButton>;
         })}
       </Grid>
-      <Grid item sx={{ paddingLeft: (theme) => theme.spacing(40) }}>
+      <Grid item>
         {footer.map((item, ndx) => {
           return (
             <React.Fragment key={ndx}>

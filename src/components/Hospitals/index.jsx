@@ -5,20 +5,22 @@ import {
   CardMedia,
   Container,
   Grid,
-  Paper,
   Typography,
 } from "@mui/material";
 import { Context } from "../context";
+import { useMediaQuery } from "@mui/material";
 import { Box } from "@mui/material";
 import icon from "../../images/results_icon.png";
 import "./styles.css";
 
 const Hospitals = () => {
   const globalContext = React.useContext(Context);
+  const lessThan840 = useMediaQuery("(max-width: 840px)");
+
   return (
-    <Box className="hospitals-grid">
+    <div className="hospitals-grid">
       <Container>
-        <Grid container direction="column">
+        <Grid wrap="wrap" container direction="column">
           {globalContext.hospitals.map((hospital, ndx) => {
             let addressString1 = "";
             let addressString2 = "";
@@ -56,11 +58,14 @@ const Hospitals = () => {
                   }}
                 >
                   <Box sx={{ display: "flex", flexDirection: "row" }}>
-                    <CardMedia
-                      component="img"
-                      sx={{ width: "151px" }}
-                      image={icon}
-                    />
+                    {!lessThan840 && (
+                      <CardMedia
+                        component="img"
+                        sx={{ width: "151px" }}
+                        image={icon}
+                      />
+                    )}
+
                     <CardContent
                       sx={{
                         flex: "1 0 auto",
@@ -68,7 +73,10 @@ const Hospitals = () => {
                         wordWrap: "break-word",
                       }}
                     >
-                      <Typography variant="h4" sx={{ wordWrap: "break-word" }}>
+                      <Typography
+                        variant={lessThan840 ? "body1" : "h6"}
+                        sx={{ wordWrap: "break-word" }}
+                      >
                         {hospital.name}
                       </Typography>
                       <Typography variant="body1" color="text.secondary">
@@ -85,7 +93,7 @@ const Hospitals = () => {
           })}
         </Grid>
       </Container>
-    </Box>
+    </div>
   );
 };
 

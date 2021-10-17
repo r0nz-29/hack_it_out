@@ -12,16 +12,16 @@ import { Box } from "@mui/material";
 import { Switch, Route } from "react-router-dom";
 
 const Home = () => (
-  <>
+  <div style={{ width: "100vw" }}>
     <MainSection />
     <CheckItOut />
     <TopHospitalsBanner />
     <Slider />
-  </>
+  </div>
 );
 
 const App = () => (
-  <Box className="App">
+  <div className="App">
     <Header />
     <Switch>
       <Route exact path="/">
@@ -35,6 +35,6 @@ const App = () => (
       </Route>
     </Switch>
     <Footer />
-  </Box>
+  </div>
 );
 export default App;

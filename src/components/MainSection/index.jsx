@@ -36,9 +36,15 @@ const MainSection = () => {
               paddingLeft: (theme) => theme.spacing(2),
             }}
           >
-            Lorem Ipsum has been the industry's standard dummy text ever since
-            the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.
+            Socerers is a project which makes access to hospitals just some
+            touches away. Indian Healthcare system has been always under that
+            development phase,but the growth in real has been very steady. So to
+            add our bit In the same,we made access to hospitals only some
+            touches away. We have a build a website where a user can input
+            his/her disease or related health issues and instantly get the list
+            of the hospitals specialized in the particular field, in near abouts
+            of their locality. The aim is to make the treatment reach to the
+            patient as soon as possible.
           </Typography>
           <Button
             variant="contained"

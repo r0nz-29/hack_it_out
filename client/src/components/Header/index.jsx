@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Button, Grid, Toolbar } from "@mui/material";
+import { AppBar, Button, Grid, Toolbar, Typography } from "@mui/material";
 import { useLocation, useHistory } from "react-router-dom";
 import { scroller } from "react-scroll";
 
@@ -69,19 +69,38 @@ const Header = () => {
       position="fixed"
       sx={{
         transition: "0.2s",
-        background: visible ? "white" : "transparent",
-        boxShadow: visible ? (theme) => theme.shadows[10] : "none",
+        background:
+          visible || location.pathname === "/results" ? "white" : "transparent",
+        boxShadow:
+          visible || location.pathname === "/results"
+            ? (theme) => theme.shadows[10]
+            : "none",
       }}
     >
       <Toolbar>
         <Grid container alignItems="center" justifyContent="space-between">
-          <Grid
-            item
-            alignSelf="center"
-            sx={{
-              marginLeft: "33vw",
-            }}
-          >
+          <Grid item>
+            <Typography
+              variant="h2"
+              color="secondary"
+              sx={{
+                textShadow: "1px 1px 2px black, 0 0 1em black, 0 0 0.2em black",
+              }}
+            >
+              hos
+              <Typography
+                variant="h2"
+                color="#2a268d"
+                component="span"
+                sx={{
+                  textShadow: "1px 1px 2px black, 0 0 1em pink, 0 0 0.2em pink",
+                }}
+              >
+                pitals
+              </Typography>
+            </Typography>
+          </Grid>
+          <Grid item alignSelf="center">
             {["Home", "News", "Top Hospitals", "Contact Us"].map((nav, ndx) => {
               return (
                 <Button
@@ -102,17 +121,31 @@ const Header = () => {
             })}
           </Grid>
           <Grid item>
-            <Button
-              variant="contained"
-              color={visible ? "info" : "secondary"}
-              sx={{
-                color: visible ? "white" : "#2A268D",
-                borderRadius: "40px",
-              }}
-              onClick={() => history.push("/search")}
-            >
-              Get Started
-            </Button>
+            {location.pathname === "/results" ? (
+              <Button
+                variant="contained"
+                color="info"
+                sx={{
+                  color: "white",
+                  borderRadius: "40px",
+                }}
+                onClick={() => history.push("/search")}
+              >
+                back to search
+              </Button>
+            ) : (
+              <Button
+                variant="contained"
+                color={visible ? "info" : "secondary"}
+                sx={{
+                  color: visible ? "white" : "#2A268D",
+                  borderRadius: "40px",
+                }}
+                onClick={() => history.push("/search")}
+              >
+                Get Started
+              </Button>
+            )}
           </Grid>
         </Grid>
       </Toolbar>

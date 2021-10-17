@@ -9,4 +9,7 @@
   background-size: cover;
   height: 100vh;
   transition: 0.2s;
+  overflow-y: scroll;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }

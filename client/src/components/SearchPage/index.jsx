@@ -17,7 +17,7 @@ import doc from "../../images/search_doc.png";
 import "./styles.css";
 
 const Search = () => {
-  const [city, setCity] = React.useState(0);
+  const [city, setCity] = React.useState({ coords: 0, name: "" });
   const globalContext = React.useContext(Context);
   const history = useHistory();
 
@@ -34,12 +34,22 @@ const Search = () => {
           query: "hospital",
         };
         hospitalClient.venues.getVenues(params).then(({ response }) => {
-          globalContext.setHospitals(response.venues);
-          console.log(response.venues);
+          globalContext.createHospitalsList(response.venues);
           history.push("/results");
         });
       });
     }
+  }
+
+  function findByCity() {
+    let params = {
+      ll: city.coords,
+      query: "hospital",
+    };
+    hospitalClient.venues.getVenues(params).then(({ response }) => {
+      globalContext.createHospitalsList(response.venues);
+      history.push("/results");
+    });
   }
 
   return (
@@ -87,23 +97,40 @@ const Search = () => {
               <Select
                 fullWidth
                 defaultValue={0}
-                onChange={(e) => setCity(e.target.value)}
+                onChange={(e) =>
+                  setCity({ coords: e.target.value, name: e.target.id })
+                }
               >
                 <MenuItem value={0}>Select a city</MenuItem>
-                <MenuItem value={"indore"}>Indore</MenuItem>
-                <MenuItem value={"gurgaon"}>Gurgaon</MenuItem>
-                <MenuItem value={"gwalior"}>Gwalior</MenuItem>
+                <MenuItem value={"22.5726,88.3639"}>Kolkata</MenuItem>
+                <MenuItem value={"17.3850,78.4867"}>Hyderabad</MenuItem>
+                <MenuItem value={"12.9716,77.5946"}>Bangalore</MenuItem>
+                <MenuItem value={"23.0225,72.5714"}>Ahemdabad</MenuItem>
+                <MenuItem value={"28.7041,77.1025"}>Delhi</MenuItem>
+                <MenuItem value={"28.4595,77.0266"}>Gurgaon</MenuItem>
+                <MenuItem value={"19.0760,72.8777"}>Mumbai</MenuItem>
+                <MenuItem value={"18.5204,73.8567"}>Pune</MenuItem>
+                <MenuItem value={"21.1702,72.8311"}>Surat</MenuItem>
+                <MenuItem value={"22.7196,75.8577"}>Indore</MenuItem>
+                <MenuItem value={"23.2599,77.4126"}>Bhopal</MenuItem>
+                <MenuItem value={"27.1767,78.0081"}>Agra</MenuItem>
+                <MenuItem value={"23.1765,75.7885"}>Ujjain</MenuItem>
+                <MenuItem value={"26.8467,80.9462"}>Lucknow</MenuItem>
+                <MenuItem value={"29.0588,76.0856"}>Haryana</MenuItem>
+                <MenuItem value={"13.0827,80.2707"}>Chennai</MenuItem>
+                <MenuItem value={"26.9124,75.7873"}>Jaipur</MenuItem>
               </Select>
             </Grid>
             <Grid item>
               <Button
                 fullWidth
-                disabled={!city}
+                disabled={city.coords === 0 ? true : false}
                 variant="contained"
                 color="info"
                 sx={{ height: "55px" }}
+                onClick={findByCity}
               >
-                Find Hospitals {city !== 0 && `in ${city}`}
+                Find Hospitals in this city
               </Button>
             </Grid>
           </Grid>
